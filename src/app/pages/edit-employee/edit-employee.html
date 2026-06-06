@@ -1,0 +1,75 @@
+<a routerLink="/employees" class="text-sm text-slate-600 hover:underline">
+  ‹ Back to Employees
+</a>
+
+@if (employee) {
+  <div class="bg-white rounded-xl shadow p-6 mt-4">
+    <h1 class="text-2xl font-bold">Edit Employee</h1>
+    <p class="text-slate-500 mb-6">Update employee information</p>
+
+    <form (ngSubmit)="onSubmit()" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+      <div>
+        <label class="block text-sm font-semibold mb-2">Name</label>
+        <input [(ngModel)]="employee.name" name="name" required class="w-full border rounded-lg px-4 py-3">
+      </div>
+
+      <div>
+        <label class="block text-sm font-semibold mb-2">Email</label>
+        <input [(ngModel)]="employee.email" name="email" required class="w-full border rounded-lg px-4 py-3">
+      </div>
+
+      <div>
+        <label class="block text-sm font-semibold mb-2">Department</label>
+        <select [(ngModel)]="employee.department" name="department" required class="w-full border rounded-lg px-4 py-3">
+          <option>Frontend</option>
+          <option>Backend</option>
+          <option>QA</option>
+          <option>UI/UX</option>
+          <option>DevOps</option>
+          <option>HR</option>
+        </select>
+      </div>
+
+      <div>
+        <label class="block text-sm font-semibold mb-2">Phone</label>
+        <input [(ngModel)]="employee.phone" name="phone" required class="w-full border rounded-lg px-4 py-3">
+      </div>
+
+      <div>
+        <label class="block text-sm font-semibold mb-2">Job Title</label>
+        <input [(ngModel)]="employee.jobTitle" name="jobTitle" required class="w-full border rounded-lg px-4 py-3">
+      </div>
+
+      <div>
+        <label class="block text-sm font-semibold mb-2">Address</label>
+        <input [(ngModel)]="employee.address" name="address" required class="w-full border rounded-lg px-4 py-3">
+      </div>
+
+      <div>
+        <label class="block text-sm font-semibold mb-2">Salary</label>
+        <input [(ngModel)]="employee.salary" name="salary" required class="w-full border rounded-lg px-4 py-3">
+      </div>
+
+      <div>
+        <label class="block text-sm font-semibold mb-2">Joining Date</label>
+        <input [(ngModel)]="employee.joiningDate" name="joiningDate" type="date" required class="w-full border rounded-lg px-4 py-3">
+      </div>
+
+      <div class="md:col-span-2 flex justify-end gap-3 mt-4">
+        <button type="button" routerLink="/employees" class="px-5 py-2 rounded bg-slate-200">
+          Cancel
+        </button>
+
+        <button type="submit" class="px-5 py-2 rounded bg-blue-600 text-white">
+          Update Employee
+        </button>
+      </div>
+
+    </form>
+  </div>
+} @else {
+  <div class="bg-white rounded-xl shadow p-8 mt-4 text-center">
+    <h2 class="text-xl font-bold text-red-600">Employee not found.</h2>
+  </div>
+}

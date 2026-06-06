@@ -1,0 +1,100 @@
+@if (employee) {
+<div>
+  <a routerLink="/employees" class="text-sm text-slate-600 hover:underline">
+    ‹ Back to Employees
+  </a>
+
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-4">
+
+    <div class="bg-white rounded-xl shadow p-6 text-center">
+      <img
+        src="{{ employee?.Pic }}"
+         alt="{{ employee?.name }}"
+        class="w-32 h-32 rounded-full mx-auto mb-4 object-cover">
+
+      <h2 class="text-xl font-bold">{{ employee?.name }}</h2>
+      <p class="text-slate-500">{{ employee?.jobTitle }}</p>
+
+      <span class="inline-block mt-3 bg-blue-100 text-blue-700 text-xs px-3 py-1 rounded-full">
+        {{ employee?.department }}
+      </span>
+    </div>
+
+    <div class="lg:col-span-2 bg-white rounded-xl shadow p-6">
+      <div class="flex justify-end gap-2 mb-4">
+        
+        <button 
+        [routerLink]="['/employees/edit', employee?.id]"    
+        class="bg-green-500 text-white px-4 py-2 rounded text-sm">
+          Edit
+        </button>
+
+        <button class="bg-red-500 text-white px-4 py-2 rounded text-sm">
+          Delete
+        </button>
+      </div>
+
+      <div class="space-y-4 text-sm">
+        <div class="grid grid-cols-3">
+          <span class="font-semibold">ID</span>
+          <span class="col-span-2">{{ employee?.id }}</span>
+        </div>
+
+        <div class="grid grid-cols-3">
+          <span class="font-semibold">Name</span>
+          <span class="col-span-2">{{ employee?.name }}</span>
+        </div>
+
+        <div class="grid grid-cols-3">
+          <span class="font-semibold">Department</span>
+          <span class="col-span-2">{{ employee?.department }}</span>
+        </div>
+
+        <div class="grid grid-cols-3">
+          <span class="font-semibold">Job Title</span>
+          <span class="col-span-2">{{ employee?.jobTitle }}</span>
+        </div>
+
+        <div class="grid grid-cols-3">
+          <span class="font-semibold">Salary</span>
+          <span class="col-span-2">{{ employee?.salary }}</span>
+        </div>
+
+        <div class="grid grid-cols-3">
+          <span class="font-semibold">Email</span>
+          <span class="col-span-2">{{ employee?.email }}</span>
+        </div>
+
+        <div class="grid grid-cols-3">
+          <span class="font-semibold">Phone</span>
+          <span class="col-span-2">{{ employee?.phone }}</span>
+        </div>
+
+        <div class="grid grid-cols-3">
+          <span class="font-semibold">Address</span>
+          <span class="col-span-2">{{ employee?.address }}</span>
+        </div>
+
+        <div class="grid grid-cols-3">
+          <span class="font-semibold">Joining Date</span>
+          <span class="col-span-2">{{ employee?.joiningDate }}</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+}@else {
+  <div class="bg-white rounded-xl shadow p-8 text-center">
+    <h2 class="text-xl font-bold text-red-600">
+      Employee not found.
+    </h2>
+
+    <a
+      routerLink="/employees"
+      class="inline-block mt-4 text-blue-600 hover:underline">
+      Back to Employees
+    </a>
+  </div>
+}

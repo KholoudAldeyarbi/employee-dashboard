@@ -1,0 +1,110 @@
+<div>
+  <h1 class="text-2xl font-bold text-slate-900">Employees</h1>
+  <p class="text-slate-500 mb-6">Manage and view all employees</p>
+
+  <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-5">
+
+    <div>
+      <label class="block text-sm font-semibold mb-2">Department</label>
+      <select
+        [(ngModel)]="selectedDepartment"
+        class="w-48 border border-slate-300 rounded-md px-3 py-2 bg-white">
+        <option>All</option>
+        <option>Frontend</option>
+        <option>Backend</option>
+        <option>QA</option>
+        <option>UI/UX</option>
+        <option>DevOps</option>
+      </select>
+    </div>
+
+    <div class="relative w-full md:w-96">
+      <input
+        [(ngModel)]="searchText"
+        type="text"
+        placeholder="Search by name or email..."
+        class="w-full border border-slate-300 rounded-md px-4 py-2 pr-10 bg-white">
+
+      <!-- <lucide-search
+        class="w-5 h-5 text-slate-500 absolute right-3 top-2.5">
+      </lucide-search> -->
+      <svg
+  lucideSearch
+  class="w-5 h-5 text-slate-500 absolute right-3 top-2.5">
+</svg>
+    </div>
+<div>
+  <label class="block text-sm font-semibold mb-2">Sort by</label>
+  <select
+    [(ngModel)]="sortBy"
+    class="w-48 border border-slate-300 rounded-md px-3 py-2 bg-white">
+    <option value="name-asc">Name A-Z</option>
+    <option value="name-desc">Name Z-A</option>
+    <option value="salary-asc">Salary Low-High</option>
+    <option value="salary-desc">Salary High-Low</option>
+  </select>
+</div>
+  </div>
+
+  <div class="bg-white border border-slate-200 rounded-lg overflow-hidden shadow-sm">
+    <table class="w-full text-sm">
+      <thead class="bg-slate-50 text-slate-900">
+        <tr>
+          <th class="text-left p-3">ID</th>
+          <th class="text-left p-3">Name</th>
+          <th class="text-left p-3">Department</th>
+          <th class="text-left p-3">Job Title</th>
+          <th class="text-left p-3">Salary</th>
+          <th class="text-left p-3">Email</th>
+          <th class="text-left p-3">Actions</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <!-- <tr
+          *ngFor="let emp of filteredEmployees"
+          class="border-t hover:bg-slate-50"> -->
+          
+          <!-- <tr *ngFor="let emp of filteredEmployees" class="border-t hover:bg-slate-50">  -->
+@for( emp of filteredEmployees ;track emp.id)
+{
+<tr class="border-t hover:bg-slate-50">
+          <td class="p-3">{{ emp.id }}</td>
+          <td class="p-3 font-medium">{{ emp.name }}</td>
+          <td class="p-3">{{ emp.department }}</td>
+          <td class="p-3">{{ emp.jobTitle }}</td>
+          <td class="p-3">{{ emp.salary }}</td>
+          <td class="p-3">{{ emp.email }}</td>
+          <td class="p-3">
+            <div class="flex gap-2">
+              <!-- <button
+                (click)="viewEmployee(emp)"
+                class="bg-blue-500 text-white px-3 py-1 rounded text-xs">
+                View
+              </button> -->
+              <button
+                [routerLink]="['/employees', emp.id]"
+                class="bg-blue-500 text-white px-3 py-1 rounded text-xs">
+                View
+              </button>
+
+              <button
+               [routerLink]="['/employees/edit', emp.id]"
+                class="bg-green-500 text-white px-3 py-1 rounded text-xs">
+                Edit
+              </button>
+
+              <button
+                (click)="deleteEmployee(emp.id)"
+                class="bg-red-500 text-white px-3 py-1 rounded text-xs">
+                Delete
+              </button>
+            </div>
+          </td>
+        </tr>
+
+        }
+      </tbody>
+    </table>
+  </div>
+</div>

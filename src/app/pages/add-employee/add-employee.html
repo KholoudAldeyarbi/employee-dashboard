@@ -1,0 +1,91 @@
+<div class="bg-white rounded-xl shadow p-6">
+  <h1 class="text-2xl font-bold">Add New Employee</h1>
+  <p class="text-slate-500 mb-6">Fill in the form to add a new employee</p>
+
+  <form (ngSubmit)="onSubmit()" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+     <div>
+        <label class="block text-sm font-semibold mb-2">Name</label>
+        <input [(ngModel)]="employee.name" name="name" required class="w-full border rounded-lg px-4 py-3">
+      </div>
+
+      <div>
+        <label class="block text-sm font-semibold mb-2">Email</label>
+        <input [(ngModel)]="employee.email" name="email" required class="w-full border rounded-lg px-4 py-3">
+      </div>
+    <!-- <input [(ngModel)]="employee.name" name="name" required placeholder="Enter full name" class="border p-3 rounded">
+
+    <input [(ngModel)]="employee.email" name="email" required placeholder="Enter email" class="border p-3 rounded"> -->
+
+      <div>
+        <label class="block text-sm font-semibold mb-2">Department</label>
+        <select [(ngModel)]="employee.department" name="department" required class="w-full border rounded-lg px-4 py-3">
+          <option>Frontend</option>
+          <option>Backend</option>
+          <option>QA</option>
+          <option>UI/UX</option>
+          <option>DevOps</option>
+          <option>HR</option>
+        </select>
+      </div>
+
+<!--       
+    <select [(ngModel)]="employee.department" name="department" required class="border p-3 rounded">
+      <option value="">Select department</option>
+      <option>Frontend</option>
+      <option>Backend</option>
+      <option>QA</option>
+      <option>UI/UX</option>
+      <option>DevOps</option>
+      <option>HR</option>
+    </select> -->
+
+    <!-- <input [(ngModel)]="employee.phone" name="phone" required placeholder="Enter phone number" class="border p-3 rounded">
+
+    <input [(ngModel)]="employee.jobTitle" name="jobTitle" required placeholder="Enter job title" class="border p-3 rounded">
+
+    <input [(ngModel)]="employee.address" name="address" required placeholder="Enter address" class="border p-3 rounded">
+
+    <input [(ngModel)]="employee.salary" name="salary" required placeholder="Enter salary" class="border p-3 rounded">
+ 
+     
+
+    <input [(ngModel)]="employee.joiningDate" 
+    name="joiningDate" required type="date" 
+    class="border p-3 rounded"> -->
+ <div>
+        <label class="block text-sm font-semibold mb-2">Phone</label>
+        <input [(ngModel)]="employee.phone" name="phone" required class="w-full border rounded-lg px-4 py-3">
+      </div>
+
+      <div>
+        <label class="block text-sm font-semibold mb-2">Job Title</label>
+        <input [(ngModel)]="employee.jobTitle" name="jobTitle" required class="w-full border rounded-lg px-4 py-3">
+      </div>
+
+      <div>
+        <label class="block text-sm font-semibold mb-2">Address</label>
+        <input [(ngModel)]="employee.address" name="address" required class="w-full border rounded-lg px-4 py-3">
+      </div>
+
+      <div>
+        <label class="block text-sm font-semibold mb-2">Salary</label>
+        <input [(ngModel)]="employee.salary" name="salary" required class="w-full border rounded-lg px-4 py-3">
+      </div>
+
+      <div>
+        <label class="block text-sm font-semibold mb-2">Joining Date</label>
+        <input [(ngModel)]="employee.joiningDate" name="joiningDate" type="date" required class="w-full border rounded-lg px-4 py-3">
+      </div>
+    <div class="md:col-span-2 flex justify-end gap-3 mt-4">
+      <button type="button" routerLink="/employees" class="px-5 py-2 rounded bg-slate-200">
+        Cancel
+      </button>
+
+      <button type="submit" class="px-5 py-2 rounded bg-blue-600 text-white">
+        Save Employee
+      </button>
+    </div>
+
+  </form>
+</div>

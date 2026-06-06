@@ -1,0 +1,107 @@
+<section>
+  <h1 class="text-2xl font-bold text-slate-900">Dashboard</h1>
+  <p class="text-slate-500 mb-6">Overview of your company</p>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+
+    <div class="bg-white rounded-xl shadow p-5 border border-slate-100">
+      <div class="flex items-center gap-4">
+        <div class="w-12 h-12 bg-blue-600 text-white rounded-lg flex items-center justify-center text-xl">
+            <!-- <lucide-angular-icon
+              [img]="UsersIcon"
+              class="w-6 h-6">
+            </lucide-angular-icon> -->
+            
+            <svg lucideUser></svg>
+        </div>
+        <div>
+          <p class="text-sm font-semibold text-slate-600">Total Employees</p>
+          <h2 class="text-2xl font-bold text-slate-900">  {{ totalEmployees }}</h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-xl shadow p-5 border border-slate-100">
+      <div class="flex items-center gap-4">
+        <div class="w-12 h-12 bg-emerald-500 text-white rounded-lg flex items-center justify-center text-xl">
+          <!-- 💰  WalletIcon-->
+             <svg lucideBadgeDollarSign></svg>
+        </div>
+        <div>
+          <p class="text-sm font-semibold text-slate-600">Total Salary</p>
+          <h2 class="text-2xl font-bold text-slate-900"> {{ totalSalary | currency:'USD':'symbol':'1.0-0' }}</h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-xl shadow p-5 border border-slate-100">
+      <div class="flex items-center gap-4">
+        <div class="w-12 h-12 bg-orange-400 text-white rounded-lg flex items-center justify-center text-xl">
+          <!-- 💼  LucideBriefcase-->
+            <svg lucideBriefcase></svg>
+        </div>
+        <div>
+          <p class="text-sm font-semibold text-slate-600">Average Salary</p>
+          <h2 class="text-2xl font-bold text-slate-900"> {{ averageSalary | currency:'USD':'symbol':'1.0-0' }}</h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-xl shadow p-5 border border-slate-100">
+      <div class="flex items-center gap-4">
+        <div class="w-12 h-12 bg-purple-500 text-white rounded-lg flex items-center justify-center text-xl">
+          <!-- 🏢 LucideBuilding2-->
+             <svg lucideBuilding2 ></svg>
+        </div>
+        <div>
+          <p class="text-sm font-semibold text-slate-600">Departments</p>
+          <h2 class="text-2xl font-bold text-slate-900"> {{ totalDepartments }}</h2>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  
+
+  <div class="bg-white rounded-2xl shadow p-6">
+  <h2 class="text-lg font-bold mb-6">
+    Employees per Department
+  </h2>
+
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+
+    <!-- Chart -->
+    <div class="h-48">
+      <canvas
+        baseChart
+        [data]="barChartData"
+        [options]="barChartOptions"
+        [type]="'bar'">
+      </canvas>
+    </div>
+
+    <!-- Table -->
+    <div class="border border-slate-200 rounded-lg overflow-hidden">
+      <table class="w-full text-sm">
+        <thead class="bg-slate-50">
+          <tr>
+            <th class="text-left p-3">Department</th>
+            <th class="text-left p-3">Employees</th>
+          </tr>
+        </thead>
+
+        <tbody>
+            <tr
+              *ngFor="let item of departmentStats"
+              class="border-t">
+              <td class="p-3">{{ item.department }}</td>
+              <td class="p-3">{{ item.count }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>
+</section>
