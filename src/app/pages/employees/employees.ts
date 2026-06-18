@@ -76,7 +76,15 @@ getSalaryNumber(salary: string): number {
   return Number(salary.replace('$', '').replace(',', ''));
 }
 
-deleteEmployee(id: number) {
+deleteEmployee(id: number , name: string) {
+   if (!id) return;
+
+    const confirmDelete = confirm(
+      `Are you sure you want to delete ${name}?`
+    );
+
+    if (!confirmDelete) return;
+
  // this.employees = this.employees.filter(emp => emp.id !== id);
   this.employeeService.deleteEmployee(id);
   this.employees = this.employeeService.getEmployees();

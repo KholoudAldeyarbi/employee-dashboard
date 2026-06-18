@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component , OnInit} from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { Component , EventEmitter, OnInit, Output} from '@angular/core';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { EMPLOYEES } from '../../data/employees.data';
 import { EmployeeService } from '../../services/employee.service';
 
@@ -15,8 +15,10 @@ export class EmployeeDetails implements OnInit {
   id!: number;
  employees = EMPLOYEES;
  employee: any;
-
-  constructor(private route: ActivatedRoute, private employeeService: EmployeeService) {}
+  
+  constructor(private route: ActivatedRoute,
+     private employeeService: EmployeeService,
+      private router: Router) {}
 
   ngOnInit(): void {
 
@@ -55,5 +57,18 @@ export class EmployeeDetails implements OnInit {
       console.log('Picture URL:', Pic); 
     }
   }
+      onDelete(id: number): void {
+    if (!this.employee) return;
 
+    const confirmDelete = confirm(
+      `Are you sure you want to delete ${this.employee.name}?`
+    );
+
+    if (!confirmDelete) return;
+
+   // this.employees = this.employees.filter(emp => emp.id !== id);
+  this.employeeService.deleteEmployee(id);
+  this.employees = this.employeeService.getEmployees();
+   this.router.navigate(['/employees']);
+  }
 }
